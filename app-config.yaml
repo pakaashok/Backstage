@@ -6,10 +6,7 @@ organization:
   name: My Company
 
 backend:
-  # FIXED: Un-commented to support the permission framework
-  auth:
-    keys:
-      - secret: ${BACKEND_SECRET}
+  # REMOVED: auth.keys to prevent local 401/Unauthorized errors
   baseUrl: http://localhost:7007
   listen:
     port: 7007
@@ -39,7 +36,7 @@ techdocs:
 
 auth:
   providers:
-    # FIXED: Added the flag for the new Guest backend module
+    # FIXED: This is all you need for local guest access
     guest:
       dangerouslyAllowEveryone: true
 
@@ -76,4 +73,3 @@ kubernetes: {}
 
 permission:
   enabled: false
-  
