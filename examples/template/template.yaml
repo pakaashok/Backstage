@@ -1,0 +1,45 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-app-repo
+  title: Create Application Repo
+  description: Create GitHub repo with CODEOWNERS
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: Provide details
+      required:
+        - repoName
+        - teamName
+      properties:
+        repoName:
+          title: Repository Name
+          type: string
+        teamName:
+          title: Team Name
+          type: string
+
+  steps:
+    # Step 1: Write the content to the workspace first
+    - id: fetch-base
+      name: Create CODEOWNERS file
+      action: fetch:template
+      input:
+        url: ./content # We will create this folder in a second
+        values:
+          teamName: ${{ parameters.teamName }}
+
+    # Step 2: Create the Repo and push the workspace
+    - id: create-repo
+      name: Create and Publish GitHub Repo
+      action: publish:github
+      input:
+        repoUrl: "github.com?repo=${{ parameters.repoName }}&owner=pakaashok"
+        defaultBranch: main
+
+  output:
+    links:
+      - title: Open Repository
+        url: https://github.com/pakaashok/${{ parameters.repoName }}
