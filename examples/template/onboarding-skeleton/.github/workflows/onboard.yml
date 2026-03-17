@@ -5,10 +5,14 @@ jobs:
   onboard:
     runs-on: ubuntu-latest
     steps:
+      # FIX 1: Tell the checkout action to use your Admin Token
       - uses: actions/checkout@v4
-      
+        with:
+          token: ${{ secrets.ORG_ADMIN_TOKEN }}
+
       - name: Onboard User
         env:
+          # FIX 2: Ensure the secret name matches exactly what you create in Org Settings
           GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
           USER: ${{ values.githubUser }}
         run: |
@@ -19,6 +23,7 @@ jobs:
           mkdir -p .github
           echo "* @$USER" > .github/CODEOWNERS
           
+          # Commit and Push
           git config --global user.name "Backstage-Bot"
           git config --global user.email "bot@backstage.io"
           git add .github/CODEOWNERS
