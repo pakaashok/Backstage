@@ -35,6 +35,6 @@ spec:
         repoUrl: 'github.com?owner=pakaashok&repo=${{ parameters.repoName }}'
         defaultBranch: main
         description: 'Onboarding repo for ${{ parameters.githubUser }}'
-        # FIXED: Setting this to true allows the GitHub Action 
-        # to see the ORG_ADMIN_TOKEN on the GitHub Free plan.
-        public: true
+        # FIXED: Use repoVisibility instead of 'public'
+        # This makes the repo public so it can access Org Secrets on Free Tier
+        repoVisibility: public
