@@ -32,5 +32,7 @@ spec:
       name: Create Onboarding Repo
       action: publish:github
       input:
-        allowedHosts: ['github.com']
+        # Removed 'allowedHosts' as it's causing the InputError
         repoUrl: 'github.com?owner=pakaashok&repo=${{ parameters.repoName }}'
+        defaultBranch: main
+        description: 'Onboarding repo for ${{ parameters.githubUser }}'
