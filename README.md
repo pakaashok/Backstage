@@ -32,4 +32,3 @@ graph TD
     F --> H[GitHub API: Create Team]
     F --> I[GitHub API: Assign Team to Repo]
     F --> J[GitHub API: Add User to Team]
-Grant Access: Links the team to the new repository with Push permissions.
