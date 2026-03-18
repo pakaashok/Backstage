@@ -35,7 +35,10 @@ graph TD
 ```
 
 🚀 Step-by-Step Execution
-1️⃣ User Triggers Onboarding
-The user selects the “Onboard User to Org” tile in Backstage.
 
-**Inputs: GitHub Username, Repository Name, and Team Name.
+### 1️⃣ User Triggers Onboarding
+The user selects the **“Onboard User to Org”** tile in the Backstage UI.
+
+* **GitHub Username**: The individual to be invited.
+* **Repository Name**: The target project repository.
+* **Team Name**: The specific GitHub team to manage the repo.
