@@ -9,6 +9,16 @@ yarn install
 yarn start
 ```
 
+🚀 Step-by-Step Setup
+1. Install Prerequisites
+Ensure you have the required runtimes installed. You can verify them using:
+
+```
+node -v
+yarn -v
+git --version
+```
+
 # 🧩 🏗️ Organization Onboarding Workflow
 
 ## 🎯 Objective
