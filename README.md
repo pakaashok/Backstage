@@ -9,7 +9,7 @@ yarn install
 yarn start
 ```
 
-🚀 Step-by-Step Setup
+🚀 **Step-by-Step Setup**
 1. Install Prerequisites
 Ensure you have the required runtimes installed. You can verify them using:
 
@@ -18,6 +18,26 @@ node -v
 yarn -v
 git --version
 ```
+
+2. Create the Backstage App
+Run the following command and provide an app name (e.g., my-portal) when prompted:
+
+```
+npx @backstage/create-app
+```
+
+3. Initialize & Start
+Navigate into your project directory and launch the development server:
+
+```
+cd <your-app-name>
+yarn dev
+```
+
+* ** Frontend UI: http://localhost:3000
+* ** Backend API: http://localhost:7007
+* Port Conflict? If you see EADDRINUSE: 3000, ensure no other services are running on that port or update the app-config.yaml to use a different port.
+
 
 # 🧩 🏗️ Organization Onboarding Workflow
 
