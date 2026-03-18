@@ -1,2 +1,1 @@
-* @quantum-lab-x/{{ teamName }}
-
+* @quantum-lab-x/${{ values.teamName }}
