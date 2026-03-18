@@ -15,9 +15,11 @@ backend:
     origin: http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
+
   database:
     client: better-sqlite3
-    connection: backstage.db
+    connection:
+      directory: ./backstage-data   # ✅ FIXED
 
 integrations:
   github:
