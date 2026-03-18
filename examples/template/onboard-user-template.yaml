@@ -23,7 +23,6 @@ spec:
           title: GitHub Team Name
 
   steps:
-    # 1️⃣ Fetch template files
     - id: fetch-onboarding
       name: Fetch Onboarding Files
       action: fetch:template
@@ -32,7 +31,6 @@ spec:
         values:
           githubUser: ${{ parameters.githubUser }}
 
-    # 2️⃣ Create repo in ORG (FIXED)
     - id: publish-onboarding
       name: Create Onboarding Repo
       action: publish:github
@@ -40,9 +38,9 @@ spec:
         repoUrl: 'github.com?owner=quantum-lab-x&repo=${{ parameters.repoName }}'
         defaultBranch: main
         description: 'Onboarding repo for ${{ parameters.githubUser }}'
-        repoVisibility: private
+        # FIXED: Must be 'public' for GitHub Free Tier to access Org Secrets
+        repoVisibility: public 
 
-    # 3️⃣ Trigger GitHub Action to create team + add user
     - id: trigger-team-creation
       name: Create GitHub Team and Add User
       action: github:actions:dispatch
@@ -54,7 +52,6 @@ spec:
           team_name: ${{ parameters.teamName }}
           github_user: ${{ parameters.githubUser }}
 
-    # 4️⃣ Add CODEOWNERS
     - id: add-codeowners
       name: Add CODEOWNERS File
       action: github:repo:push
@@ -62,6 +59,7 @@ spec:
         repoUrl: 'github.com?owner=quantum-lab-x&repo=${{ parameters.repoName }}'
         branchName: main
         commitMessage: "Add CODEOWNERS"
+        # Ensure the content indentation is correct
         files:
           - path: .github/CODEOWNERS
             content: |
