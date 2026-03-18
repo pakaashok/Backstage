@@ -17,35 +17,33 @@ Automate GitHub onboarding for the **quantum-lab-x** organization using **Backst
 ---
 
 ## 🔄 Onboarding Workflow Architecture
-```
-sequenceDiagram
-    autonumber
-    participant User as 👤 Developer
-    participant BS as 🧩 Backstage
-    participant GH_New as 📁 New Project Repo
-    participant GH_Auto as ⚙️ Automation Repo
-    participant GH_Org as 🏢 GitHub Org
+```graph TD
+    %% Node Definitions
+    Start[User Selection:<br/>Onboarding Tile]
+    Scaffolder[Backstage Scaffolder]
+    Step1[Step 1: Fetch Skeleton Files]
+    Step2[Step 2: Create Public Repo]
+    Trigger[Trigger:<br/>github:actions:dispatch]
+    Workflow[Workflow: create-team.yml]
+    Invite[GitHub API: Invite User]
+    Create[GitHub API: Create Team]
+    Assign[GitHub API: Assign Team to Repo]
+    Add[GitHub API: Add User to Team]
 
-    User->>BS: Submit Onboarding Form
-    
-    rect rgb(240, 240, 240)
-        Note over BS: Scaffolder Phase
-        BS->>BS: Fetch & Template Files
-        BS->>GH_New: Create Repo & Push Code
-    end
+    %% Styling
+    classDef purple fill:#f3f0ff,stroke:#845ef7,stroke-width:2px,color:#2b2d42;
+    class Start,Scaffolder,Step1,Step2,Trigger,Workflow,Invite,Create,Assign,Add purple
 
-    BS->>GH_Auto: Dispatch 'create-team.yml'
-    
-    rect rgb(230, 245, 230)
-        Note over GH_Auto: GitHub Actions Phase
-        GH_Auto->>GH_Org: Invite User
-        GH_Auto->>GH_Org: Create Team
-        GH_Auto->>GH_Org: Add User to Team
-        GH_Auto->>GH_New: Grant Team Permissions
-    end
-    
-    GH_Org-->>User: 📧 Invitation Sent
-```
+    %% Connections
+    Start --> Scaffolder
+    Scaffolder --> Step1
+    Scaffolder --> Step2
+    Step2 --> Trigger
+    Trigger --> Workflow
+    Workflow --> Invite
+    Workflow --> Create
+    Workflow --> Assign
+    Workflow --> Add```
 
 
 ### 📊 Visual Workflow (Architecture)
