@@ -36,7 +36,8 @@ yarn dev
 
 * ** Frontend UI: http://localhost:3000
 * ** Backend API: http://localhost:7007
-* Port Conflict? If you see EADDRINUSE: 3000, ensure no other services are running on that port or update the app-config.yaml to use a different port.
+* **Port Conflict? **If you see EADDRINUSE: 3000, ensure no other services are running on that port or update the app-config.yaml to use a different port.
+
 
 
 # 🧩 🏗️ Organization Onboarding Workflow
