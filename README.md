@@ -75,9 +75,16 @@ Using the ORG_ADMIN_TOKEN stored as an Org Secret, the workflow executes:
 
 ✅ Final Automated State
 
-Component	Status	Description
-Repository	✅ Created	Hosted under quantum-lab-x
-Team	✅ Created	Dynamic name based on input
-User	✅ Invited	Official Org invitation sent
-Membership	✅ Added	User added to the new team
-Repo Access	✅ Granted	Team has write access to repo
+---
+
+## ✅ Final Automated State
+
+| Component | Status | Description |
+| :--- | :--- | :--- |
+| **Repository** | ✅ Created | Hosted under quantum-lab-x |
+| **Team** | ✅ Created | Dynamic name based on input |
+| **User** | ✅ Invited | Official Org invitation sent |
+| **Membership** | ✅ Added | User added to the new team |
+| **Repo Access** | ✅ Granted | Team has write access to repo |
+
+---
