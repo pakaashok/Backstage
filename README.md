@@ -19,8 +19,6 @@ Automate GitHub onboarding for the **quantum-lab-x** organization using **Backst
 ## 🔄 End-to-End Flow
 > **User** → **Backstage Template** → **GitHub Repo Creation** → **GitHub Actions** → **Org Setup**
 
-
-
 ### 📊 Visual Workflow (Architecture)
 
 ```mermaid
@@ -34,10 +32,7 @@ graph TD
     F --> H[GitHub API: Create Team]
     F --> I[GitHub API: Assign Team to Repo]
     F --> J[GitHub API: Add User to Team]
-
 ```
-
-
 
 🚀 **Step-by-Step Execution**
 
