@@ -17,6 +17,7 @@ Automate GitHub onboarding for the **quantum-lab-x** organization using **Backst
 ---
 
 ## 🔄 Onboarding Workflow Architecture
+```
 sequenceDiagram
     autonumber
     participant User as 👤 Developer
@@ -44,6 +45,8 @@ sequenceDiagram
     end
     
     GH_Org-->>User: 📧 Invitation Sent
+```
+
 
 ### 📊 Visual Workflow (Architecture)
 
