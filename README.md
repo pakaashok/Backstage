@@ -15,6 +15,7 @@ yarn start
 Automate GitHub onboarding for your org quantum-lab-x using Backstage + GitHub Actions.
 
 🔄 End-to-End Flow
-```User → Backstage Template → GitHub Repo Creation → GitHub Actions → Org Setup```
+```User → Backstage Template → GitHub Repo Creation → GitHub Actions → Org Setup
+```
 
 
