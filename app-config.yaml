@@ -54,17 +54,17 @@ catalog:
   locations:
     # ✅ FIXED PATHS (relative to backend)
     - type: file
-      target: ./examples/entities.yaml
+      target: ../../examples/entities.yaml
 
     # Template 1
     - type: file
-      target: ./examples/template/template.yaml
+      target: ../../examples/template/template.yaml
       rules:
         - allow: [Template]
 
     # Template 2 (Onboarding)
     - type: file
-      target: ./examples/template/onboard-user-template.yaml
+      target: ../../examples/template/onboard-user-template.yaml
       rules:
         - allow: [Template]
 
