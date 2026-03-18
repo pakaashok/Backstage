@@ -42,3 +42,8 @@ The user selects the **“Onboard User to Org”** tile in the Backstage UI.
 * **GitHub Username**: The individual to be invited.
 * **Repository Name**: The target project repository.
 * **Team Name**: The specific GitHub team to manage the repo.
+
+### 2️⃣ Backstage Scaffolder Executes Template
+* **Step A (Fetch): Loads configuration from onboarding-skeleton/ and injects variables like githubUser.
+
+* **Step B (Publish): Creates the repository quantum-lab-x/<repoName> with repoVisibility: public.
