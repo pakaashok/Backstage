@@ -37,7 +37,7 @@ graph TD
 
 
 
-🚀 Step-by-Step Execution
+🚀 **Step-by-Step Execution**
 
 ### 1️⃣ User Triggers Onboarding
 The user selects the **“Onboard User to Org”** tile in the Backstage UI.
