@@ -37,7 +37,7 @@ auth:
   environment: development   # ✅ REQUIRED (FIXED)
   providers:
     guest:
-      dangerouslyAllowOutsideDevelopment: true   # ✅ CORRECT FLAG (FIXED)
+      dangerouslyAllowEveryone: true   # ✅ CORRECT FLAG (FIXED)
 
 scaffolder: {}
 
