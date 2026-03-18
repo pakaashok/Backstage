@@ -18,31 +18,32 @@ Automate GitHub onboarding for the **quantum-lab-x** organization using **Backst
 
 ## 🔄 Onboarding Workflow Architecture
 sequenceDiagram
+    autonumber
     participant User as 👤 Developer
-    participant BS as 🧩 Backstage (Scaffolder)
-    participant GH_New as 📁 New Repo (quantum-lab-x)
-    participant GH_Auto as ⚙️ Platform Automation Repo
-    participant GH_Org as 🏢 GitHub Organization
+    participant BS as 🧩 Backstage
+    participant GH_New as 📁 New Project Repo
+    participant GH_Auto as ⚙️ Automation Repo
+    participant GH_Org as 🏢 GitHub Org
 
-    User->>BS: Fills Template (User, Repo, Team)
+    User->>BS: Submit Onboarding Form
     
-    Note over BS: Step 1: Fetch Onboarding Files
-    BS->>BS: Processes Skeleton & Injects variables
+    rect rgb(240, 240, 240)
+        Note over BS: Scaffolder Phase
+        BS->>BS: Fetch & Template Files
+        BS->>GH_New: Create Repo & Push Code
+    end
 
-    Note over BS: Step 2: Create Onboarding Repo
-    BS->>GH_New: Creates Public Repo
-    BS->>GH_New: Pushes .github/CODEOWNERS & onboard.yml
-
-    Note over BS: Step 3: Trigger GitHub Action
-    BS->>GH_Auto: Dispatch workflow: create-team.yml
+    BS->>GH_Auto: Dispatch 'create-team.yml'
     
-    Note over GH_Auto: Step 4: Org Automation (GitHub Script)
-    GH_Auto->>GH_Org: Invite User to Org
-    GH_Auto->>GH_Org: Create GitHub Team
-    GH_Auto->>GH_Org: Add User to Team
-    GH_Auto->>GH_New: Grant Team 'Push' Access to Repo
+    rect rgb(230, 245, 230)
+        Note over GH_Auto: GitHub Actions Phase
+        GH_Auto->>GH_Org: Invite User
+        GH_Auto->>GH_Org: Create Team
+        GH_Auto->>GH_Org: Add User to Team
+        GH_Auto->>GH_New: Grant Team Permissions
+    end
     
-    GH_Org-->>User: 📧 Invitation Email Sent
+    GH_Org-->>User: 📧 Invitation Sent
 
 ### 📊 Visual Workflow (Architecture)
 
