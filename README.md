@@ -16,34 +16,37 @@ Automate GitHub onboarding for the **quantum-lab-x** organization using **Backst
 
 ---
 
-## 🔄 Onboarding Workflow Architecture
-```graph TD
-    %% Node Definitions
-    Start[User Selection:<br/>Onboarding Tile]
-    Scaffolder[Backstage Scaffolder]
-    Step1[Step 1: Fetch Skeleton Files]
-    Step2[Step 2: Create Public Repo]
-    Trigger[Trigger:<br/>github:actions:dispatch]
-    Workflow[Workflow: create-team.yml]
-    Invite[GitHub API: Invite User]
-    Create[GitHub API: Create Team]
-    Assign[GitHub API: Assign Team to Repo]
-    Add[GitHub API: Add User to Team]
+### 🔄 End-to-End Onboarding Flow
 
-    %% Styling
-    classDef purple fill:#f3f0ff,stroke:#845ef7,stroke-width:2px,color:#2b2d42;
-    class Start,Scaffolder,Step1,Step2,Trigger,Workflow,Invite,Create,Assign,Add purple
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User as 👤 Developer
+    participant BS as 🧩 Backstage (Scaffolder)
+    participant GH_New as 📁 New Repo (quantum-lab-x)
+    participant GH_Auto as ⚙️ Platform Automation Repo
+    participant GH_Org as 🏢 GitHub Organization
 
-    %% Connections
-    Start --> Scaffolder
-    Scaffolder --> Step1
-    Scaffolder --> Step2
-    Step2 --> Trigger
-    Trigger --> Workflow
-    Workflow --> Invite
-    Workflow --> Create
-    Workflow --> Assign
-    Workflow --> Add```
+    User->>BS: Fills Template (User, Repo, Team)
+    
+    Note over BS: Step 1: Fetch Onboarding Files
+    BS->>BS: Processes Skeleton & Injects variables
+
+    Note over BS: Step 2: Create Onboarding Repo
+    BS->>GH_New: Creates Public Repo
+    BS->>GH_New: Pushes CODEOWNERS & onboard.yml
+
+    Note over BS: Step 3: Trigger GitHub Action
+    BS->>GH_Auto: Dispatch workflow: create-team.yml
+    
+    Note over GH_Auto: Step 4: Org Automation
+    GH_Auto->>GH_Org: Invite User to Org
+    GH_Auto->>GH_Org: Create GitHub Team
+    GH_Auto->>GH_Org: Add User to Team
+    GH_Auto->>GH_New: Grant Team Access
+    
+    GH_Org-->>User: 📧 Invitation Email Sent
+```
 
 
 ### 📊 Visual Workflow (Architecture)
