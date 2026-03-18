@@ -34,3 +34,8 @@ graph TD
     F --> J[GitHub API: Add User to Team]
 ```
 
+🚀 Step-by-Step Execution
+1️⃣ User Triggers Onboarding
+The user selects the “Onboard User to Org” tile in Backstage.
+
+**Inputs: GitHub Username, Repository Name, and Team Name.
