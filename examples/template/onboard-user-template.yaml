@@ -31,7 +31,7 @@ spec:
         url: ./onboarding-skeleton
         values:
           githubUser: ${{ parameters.githubUser }}
-          teamName: ${{ parameters.teamName }}   # ✅ FIX ADDED
+          teamName: ${{ parameters.teamName }}
 
     - id: publish-onboarding
       name: Create Onboarding Repo
@@ -52,4 +52,4 @@ spec:
         workflowInputs:
           team_name: ${{ parameters.teamName }}
           github_user: ${{ parameters.githubUser }}
-          
+          repo_name: ${{ parameters.repoName }}   # ✅ FIX ADDED
