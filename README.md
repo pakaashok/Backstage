@@ -16,8 +16,33 @@ Automate GitHub onboarding for the **quantum-lab-x** organization using **Backst
 
 ---
 
-## 🔄 End-to-End Flow
-> **User** → **Backstage Template** → **GitHub Repo Creation** → **GitHub Actions** → **Org Setup**
+## 🔄 Onboarding Workflow Architecture
+sequenceDiagram
+    participant User as 👤 Developer
+    participant BS as 🧩 Backstage (Scaffolder)
+    participant GH_New as 📁 New Repo (quantum-lab-x)
+    participant GH_Auto as ⚙️ Platform Automation Repo
+    participant GH_Org as 🏢 GitHub Organization
+
+    User->>BS: Fills Template (User, Repo, Team)
+    
+    Note over BS: Step 1: Fetch Onboarding Files
+    BS->>BS: Processes Skeleton & Injects variables
+
+    Note over BS: Step 2: Create Onboarding Repo
+    BS->>GH_New: Creates Public Repo
+    BS->>GH_New: Pushes .github/CODEOWNERS & onboard.yml
+
+    Note over BS: Step 3: Trigger GitHub Action
+    BS->>GH_Auto: Dispatch workflow: create-team.yml
+    
+    Note over GH_Auto: Step 4: Org Automation (GitHub Script)
+    GH_Auto->>GH_Org: Invite User to Org
+    GH_Auto->>GH_Org: Create GitHub Team
+    GH_Auto->>GH_Org: Add User to Team
+    GH_Auto->>GH_New: Grant Team 'Push' Access to Repo
+    
+    GH_Org-->>User: 📧 Invitation Email Sent
 
 ### 📊 Visual Workflow (Architecture)
 
