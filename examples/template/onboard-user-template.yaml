@@ -54,12 +54,14 @@ spec:
 
     - id: add-codeowners
       name: Add CODEOWNERS File
-      action: github:repo:push
+      action: publish:github:pull-request
       input:
         repoUrl: 'github.com?owner=quantum-lab-x&repo=${{ parameters.repoName }}'
-        branchName: main
-        commitMessage: "Add CODEOWNERS"
-        # Ensure the content indentation is correct
+        branchName: add-codeowners
+        title: "Add CODEOWNERS"
+        description: "Adding CODEOWNERS file"
+        sourcePath: .
+        targetPath: .
         files:
           - path: .github/CODEOWNERS
             content: |
